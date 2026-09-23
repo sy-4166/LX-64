@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
+import '../screens/auth/login_page.dart';
+import '../screens/home/home_page.dart';
 import 'localization.dart';
-import 'routes.dart';
 
 class LX64App extends StatelessWidget {
   const LX64App({super.key});
@@ -14,13 +16,14 @@ class LX64App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: const Color(0xFF08090D),
+        scaffoldBackgroundColor: const Color(0xFF0B090D),
         useMaterial3: true,
       ),
       localizationsDelegates: const [
         LX64LocalizationsDelegate(),
-        DefaultWidgetsLocalizations.delegate,
-        DefaultMaterialLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: const [
         Locale('en'),
@@ -52,36 +55,21 @@ class _AuthGate extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
+            backgroundColor: Color(0xFF0B090D),
             body: Center(
               child: CircularProgressIndicator(),
             ),
           );
         }
 
-        if (snapshot.hasData) {
-          return const _HomeEntry();
+        final user = snapshot.data;
+
+        if (user != null) {
+          return const HomePage();
         }
 
-        return const _LoginEntry();
+        return const LoginPage();
       },
     );
-  }
-}
-
-class _LoginEntry extends StatelessWidget {
-  const _LoginEntry();
-
-  @override
-  Widget build(BuildContext context) {
-    return LX64Routes.routes['/login']!(context);
-  }
-}
-
-class _HomeEntry extends StatelessWidget {
-  const _HomeEntry();
-
-  @override
-  Widget build(BuildContext context) {
-    return LX64Routes.routes['/home']!(context);
   }
 }
