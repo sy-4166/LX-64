@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "153501589255",
+    "project_id": "lx-64-78d03",
+    "storage_bucket": "lx-64-78d03.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:153501589255:android:5b41a2bada3623d926efa2",
+        "android_client_info": {
+          "package_name": "com.example.lx_64"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu4qtyWxbEhIGfHxobszq8qfGpasGYTUw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
